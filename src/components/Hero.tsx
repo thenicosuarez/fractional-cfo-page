@@ -18,30 +18,33 @@ const Hero = () => {
             Strategic Financial Leadership for Growing Businesses
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto">
-            Specialized fractional CFO services for ecommerce entrepreneurs and acquisition-driven investors.
+            Specialized fractional CFO services for ecommerce entrepreneurs and acquisition-minded investors.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Button className="btn-primary bg-cfo-accent hover:bg-cfo-accent/90 text-lg px-8 py-6">
               Explore Services
             </Button>
-            <Button variant="outline" className="btn-secondary text-lg px-8 py-6">
+            <Button 
+              variant="outline" 
+              className="btn-secondary text-lg px-8 py-6 text-white border-white hover:bg-white/10"
+            >
               Schedule a Call
             </Button>
           </div>
           
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16">
             <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg min-w-[180px]">
-              <p className="text-3xl font-bold text-white mb-1">10+ Years</p>
+              <p className="text-3xl font-bold text-white mb-1">8+ Years</p>
               <p className="text-white/80">Financial Expertise</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg min-w-[180px]">
-              <p className="text-3xl font-bold text-white mb-1">$100M+</p>
-              <p className="text-white/80">Capital Raised</p>
+              <p className="text-3xl font-bold text-white mb-1">$3B+</p>
+              <p className="text-white/80">In Transactions</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg min-w-[180px]">
-              <p className="text-3xl font-bold text-white mb-1">50+</p>
-              <p className="text-white/80">Successful M&As</p>
+              <p className="text-3xl font-bold text-white mb-1">10+</p>
+              <p className="text-white/80">M&A Deals</p>
             </div>
           </div>
         </div>
