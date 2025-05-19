@@ -8,6 +8,7 @@ import Testimonials from "@/components/Testimonials";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import RecommendedTools from "@/components/RecommendedTools";
 
 const Index = () => {
   useEffect(() => {
@@ -52,6 +53,10 @@ const Index = () => {
         
         <div className="animate-on-scroll">
           <About />
+        </div>
+        
+        <div className="animate-on-scroll">
+          <RecommendedTools />
         </div>
         
         <div className="animate-on-scroll">
