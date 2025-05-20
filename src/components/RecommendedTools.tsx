@@ -8,67 +8,55 @@ const RecommendedTools = () => {
       category: "Financial Management",
       tools: [
         {
-          name: "Quickbooks Online",
-          description: "Cloud-based accounting software for small businesses",
-          link: "#",
+          name: "Riverbend / Amazon Services",
+          description: "Specialized services for Amazon sellers",
+          link: "https://riverbendconsulting.referralrock.com/l/NICOLASSUA05/",
           image: "/placeholder.svg"
         },
         {
-          name: "Fathom",
-          description: "Financial reporting and analytics platform",
-          link: "#",
+          name: "Mercury",
+          description: "Banking built for startups and e-commerce businesses",
+          link: "https://mercury.com/r/tns-practices-llc",
           image: "/placeholder.svg"
         },
         {
-          name: "Bench",
-          description: "Bookkeeping services with dedicated bookkeepers",
-          link: "#",
+          name: "Marcus",
+          description: "High-yield online savings account with bonus opportunities",
+          link: "https://www.marcus.com/share/NIC-M6F-8RBZ",
           image: "/placeholder.svg"
         }
       ]
     },
     {
-      category: "E-commerce Operations",
+      category: "Business Tools",
       tools: [
         {
-          name: "Inventory Planner",
-          description: "Inventory forecasting and planning solution",
-          link: "#",
+          name: "Doola",
+          description: "Form your business and handle compliance (10% discount for referrals)",
+          link: "https://doola.com/?via=2sNo9UKXFEXDmCukUa0eFZUvNyd",
           image: "/placeholder.svg"
         },
         {
-          name: "Easyship",
-          description: "All-in-one shipping platform for global e-commerce",
-          link: "#",
+          name: "Otter AI",
+          description: "AI meeting notes and transcription service",
+          link: "https://otter.ai/referrals/M19IGIBK",
           image: "/placeholder.svg"
         },
         {
-          name: "SureDone",
-          description: "Multi-channel inventory and listing management",
-          link: "#",
+          name: "Bolt (no code)",
+          description: "No-code platform for building web applications",
+          link: "https://bolt.new/?rid=ez85zl",
           image: "/placeholder.svg"
         }
       ]
     },
     {
-      category: "Startup Essentials",
+      category: "Funding Solutions",
       tools: [
         {
-          name: "DocSend",
-          description: "Secure document sharing with engagement analytics",
-          link: "#",
-          image: "/placeholder.svg"
-        },
-        {
-          name: "Carta",
-          description: "Equity management and valuation platform",
-          link: "#",
-          image: "/placeholder.svg"
-        },
-        {
-          name: "AngelList",
-          description: "Platform for startups, angel investors, and job-seekers",
-          link: "#",
+          name: "WeFunder",
+          description: "Equity crowdfunding platform for startups",
+          link: "https://wefunder.com/nicolassuarez/raise",
           image: "/placeholder.svg"
         }
       ]
