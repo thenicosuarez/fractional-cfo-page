@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Button } from "@/components/ui/button";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const About = () => {
@@ -37,7 +36,7 @@ const About = () => {
                 Later, I joined an early-stage startup as the seventh employee, focusing on acquiring ecommerce businesses in the personal care and health & wellness space. I helped scale the company through its Series C financing to unicorn status while leading over a dozen successful acquisitions.
               </p>
               <p>
-                Today, I help entrepreneurs acquire software businesses and work with investors on raising significant capital toward those efforts. I'm particularly passionate about supporting search fund entrepreneurs by providing M&A as a service.
+                Today, I help ecommerce entrepreneurs run their businesses efficiently and help search fund entrepreneurs (ETA) raise capital and diligence acquisitions.
               </p>
             </div>
             
@@ -90,10 +89,6 @@ const About = () => {
                 </ul>
               </div>
             </div>
-            
-            <Button className="bg-cfo-navy hover:bg-cfo-blue text-white px-8">
-              Download Bio
-            </Button>
           </div>
         </div>
       </div>
