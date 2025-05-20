@@ -125,8 +125,13 @@ const Contact = () => {
                 
                 <div className="mt-8">
                   <h4 className="font-semibold text-cfo-navy mb-4">Schedule a Call</h4>
-                  <Button className="w-full bg-cfo-accent hover:bg-cfo-accent/90 text-white">
-                    Book a Consultation
+                  <Button 
+                    className="w-full bg-cfo-accent hover:bg-cfo-accent/90 text-white"
+                    asChild
+                  >
+                    <a href="https://calendly.com/thenicosuarez/15min" target="_blank" rel="noopener noreferrer">
+                      Book a Consultation
+                    </a>
                   </Button>
                   <p className="text-xs text-center text-cfo-slate mt-2">
                     30-minute free consultation available

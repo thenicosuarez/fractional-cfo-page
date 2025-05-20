@@ -40,8 +40,13 @@ const Navbar = () => {
           </div>
           
           <div className="hidden md:block">
-            <Button className={`${isScrolled ? 'bg-cfo-navy text-white' : 'bg-white text-cfo-navy'} hover:bg-cfo-accent hover:text-white`}>
-              Book a Consultation
+            <Button 
+              className={`${isScrolled ? 'bg-cfo-navy text-white' : 'bg-cfo-accent text-white'} hover:bg-cfo-accent/90`}
+              asChild
+            >
+              <a href="https://calendly.com/thenicosuarez/15min" target="_blank" rel="noopener noreferrer">
+                Book a Consultation
+              </a>
             </Button>
           </div>
           
@@ -68,8 +73,13 @@ const Navbar = () => {
           <div className="pt-2 pb-4 px-4 space-y-1">
             <NavLinksMobile setMobileMenuOpen={setMobileMenuOpen} />
             <div className="pt-2">
-              <Button className="w-full bg-cfo-navy text-white hover:bg-cfo-accent">
-                Book a Consultation
+              <Button 
+                className="w-full bg-cfo-navy text-white hover:bg-cfo-accent"
+                asChild
+              >
+                <a href="https://calendly.com/thenicosuarez/15min" target="_blank" rel="noopener noreferrer">
+                  Book a Consultation
+                </a>
               </Button>
             </div>
           </div>

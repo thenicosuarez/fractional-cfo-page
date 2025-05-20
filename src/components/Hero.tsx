@@ -22,28 +22,34 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-            <Button className="btn-primary bg-cfo-accent hover:bg-cfo-accent/90 text-lg px-8 py-6">
-              Explore Services
+            <Button 
+              className="btn-primary bg-cfo-accent hover:bg-cfo-accent/90 text-lg px-8 py-6"
+              asChild
+            >
+              <a href="#services">Explore Services</a>
             </Button>
             <Button 
               variant="outline" 
-              className="btn-secondary text-lg px-8 py-6 text-white border-white hover:bg-white/10"
+              className="bg-white/20 text-lg px-8 py-6 text-white border-white hover:bg-white/30"
+              asChild
             >
-              Schedule a Call
+              <a href="https://calendly.com/thenicosuarez/15min" target="_blank" rel="noopener noreferrer">
+                Schedule a Call
+              </a>
             </Button>
           </div>
           
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16">
-            <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg min-w-[180px]">
-              <p className="text-3xl font-bold text-white mb-1">8+ Years</p>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
+            <div className="bg-white/10 backdrop-blur-sm p-5 rounded-lg min-w-[200px]">
+              <p className="text-3xl font-bold text-white mb-1">10 Years</p>
               <p className="text-white/80">Financial Expertise</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg min-w-[180px]">
+            <div className="bg-white/10 backdrop-blur-sm p-5 rounded-lg min-w-[200px]">
               <p className="text-3xl font-bold text-white mb-1">$3B+</p>
               <p className="text-white/80">In Transactions</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg min-w-[180px]">
-              <p className="text-3xl font-bold text-white mb-1">10+</p>
+            <div className="bg-white/10 backdrop-blur-sm p-5 rounded-lg min-w-[200px]">
+              <p className="text-3xl font-bold text-white mb-1">15+</p>
               <p className="text-white/80">M&A Deals</p>
             </div>
           </div>

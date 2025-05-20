@@ -58,6 +58,12 @@ const RecommendedTools = () => {
           description: "Equity crowdfunding platform for startups",
           link: "https://wefunder.com/nicolassuarez/raise",
           image: "/placeholder.svg"
+        },
+        {
+          name: "Republic",
+          description: "Equity crowdfunding platform for startups",
+          link: "https://republic.com/raise/i/tk7ncq",
+          image: "/placeholder.svg"
         }
       ]
     }
