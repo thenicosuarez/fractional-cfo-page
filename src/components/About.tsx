@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const About = () => {
   return (
@@ -9,12 +10,21 @@ const About = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <div className="bg-white rounded-lg shadow-md p-1">
-              <div className="bg-gradient-to-r from-cfo-navy to-cfo-blue rounded-lg aspect-square"></div>
+              <Avatar className="w-full h-auto aspect-square rounded-lg overflow-hidden">
+                <AvatarImage 
+                  src="/lovable-uploads/ad1f2806-ed9a-406d-bab7-eed41a1f2c43.png" 
+                  alt="Nico, Fractional CFO" 
+                  className="object-cover w-full h-full"
+                />
+                <AvatarFallback className="bg-gradient-to-r from-cfo-navy to-cfo-blue text-4xl">
+                  NC
+                </AvatarFallback>
+              </Avatar>
             </div>
           </div>
           
           <div>
-            <h2 className="section-title text-left">Meet Your Fractional CFO</h2>
+            <h2 className="section-title text-left">Meet Nico, your 10x Fractional CFO</h2>
             <h3 className="text-2xl font-semibold text-cfo-blue mb-4">
               M&A and Investment Leadership
             </h3>
