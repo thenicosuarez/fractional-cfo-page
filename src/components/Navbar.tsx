@@ -28,7 +28,7 @@ const Navbar = () => {
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex-shrink-0">
-            <a href="#" className="flex items-center">
+            <a href="/" className="flex items-center">
               <span className={`font-playfair text-2xl font-bold ${isScrolled ? 'text-cfo-navy' : 'text-white'}`}>
                 CFO Services
               </span>
@@ -98,6 +98,7 @@ const NavLinks = ({ isScrolled }: { isScrolled: boolean }) => {
       <a href="#approach" className={`${linkClass} font-medium`}>Approach</a>
       <a href="#testimonials" className={`${linkClass} font-medium`}>Testimonials</a>
       <a href="#about" className={`${linkClass} font-medium`}>About</a>
+      <a href="/blog" className={`${linkClass} font-medium`}>Blog</a>
       <a href="#contact" className={`${linkClass} font-medium`}>Contact</a>
     </>
   );
@@ -116,6 +117,7 @@ const NavLinksMobile = ({ setMobileMenuOpen }: { setMobileMenuOpen: (open: boole
       <a href="#approach" className={linkClass} onClick={handleClick}>Approach</a>
       <a href="#testimonials" className={linkClass} onClick={handleClick}>Testimonials</a>
       <a href="#about" className={linkClass} onClick={handleClick}>About</a>
+      <a href="/blog" className={linkClass} onClick={handleClick}>Blog</a>
       <a href="#contact" className={linkClass} onClick={handleClick}>Contact</a>
     </>
   );
