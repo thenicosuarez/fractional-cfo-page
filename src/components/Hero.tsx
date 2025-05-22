@@ -28,15 +28,26 @@ const Hero = () => {
             >
               <a href="#services">Explore Services</a>
             </Button>
-            <Button 
-              variant="outline" 
-              className="bg-white/20 text-lg px-8 py-6 text-white border-white hover:bg-white/30"
-              asChild
-            >
-              <a href="https://calendly.com/thenicosuarez/15min" target="_blank" rel="noopener noreferrer">
-                Schedule a Call
-              </a>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button 
+                variant="outline" 
+                className="bg-white/20 text-lg px-6 py-6 text-white border-white hover:bg-white/30"
+                asChild
+              >
+                <a href="https://calendly.com/thenicosuarez/15min" target="_blank" rel="noopener noreferrer">
+                  Free 15min Call
+                </a>
+              </Button>
+              <Button 
+                variant="outline" 
+                className="bg-white/10 text-lg px-6 py-6 text-white border-white hover:bg-white/30"
+                asChild
+              >
+                <a href="https://calendly.com/thenicosuarez/new-meeting" target="_blank" rel="noopener noreferrer">
+                  $99 Deep Dive
+                </a>
+              </Button>
+            </div>
           </div>
           
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
