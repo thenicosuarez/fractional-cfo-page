@@ -50,7 +50,7 @@ const Hero = () => {
             </div>
           </div>
           
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 mb-20">
             <div className="bg-white/10 backdrop-blur-sm p-5 rounded-lg min-w-[200px]">
               <p className="text-3xl font-bold text-white mb-1">10 Years</p>
               <p className="text-white/80">Financial Expertise</p>
@@ -67,8 +67,8 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Scroll down indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+      {/* Scroll down indicator - Fixed positioning */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
         <a href="#services" className="flex flex-col items-center text-white/80 hover:text-white">
           <span className="mb-2 text-sm">Scroll Down</span>
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
