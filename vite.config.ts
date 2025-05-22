@@ -13,9 +13,7 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     mode === 'development' &&
-    componentTagger({
-      hideBadge: true, // Hide the Lovable badge
-    }),
+    componentTagger(), // Removed the configuration object as the function doesn't accept arguments
   ].filter(Boolean),
   resolve: {
     alias: {
