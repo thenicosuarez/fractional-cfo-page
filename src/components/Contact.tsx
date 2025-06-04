@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,6 +16,7 @@ const Contact = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
+    console.log(`Input changed: ${id} = ${value}`);
     setFormData(prev => ({
       ...prev,
       [id]: value
@@ -25,6 +25,7 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('Form submitted with data:', formData);
     
     // Create email content
     const subject = `New Contact Form Submission from ${formData.name}`;
@@ -37,8 +38,12 @@ Message:
 ${formData.message}
     `.trim();
     
+    console.log('Email subject:', subject);
+    console.log('Email body:', body);
+    
     // Create mailto link
     const mailtoLink = `mailto:thenicosuarez@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    console.log('Mailto link:', mailtoLink);
     
     // Open email client
     window.location.href = mailtoLink;
@@ -48,6 +53,8 @@ ${formData.message}
       title: "Email Client Opened",
       description: "Your default email client should open with the message pre-filled. Please send the email to complete your inquiry.",
     });
+    
+    console.log('Form reset and toast shown');
     
     // Reset form
     setFormData({
