@@ -9,7 +9,60 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      contact_messages: {
+        Row: {
+          company: string | null
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          message: string
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          message: string
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          message?: string
+        }
+        Relationships: []
+      }
+      "TNS Message Flow": {
+        Row: {
+          "Company Name": string | null
+          created_at: string
+          "Email Address": string | null
+          "Full Name": string | null
+          id: number
+          Message: string | null
+        }
+        Insert: {
+          "Company Name"?: string | null
+          created_at?: string
+          "Email Address"?: string | null
+          "Full Name"?: string | null
+          id?: number
+          Message?: string | null
+        }
+        Update: {
+          "Company Name"?: string | null
+          created_at?: string
+          "Email Address"?: string | null
+          "Full Name"?: string | null
+          id?: number
+          Message?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

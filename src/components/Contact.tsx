@@ -1,9 +1,11 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -13,6 +15,7 @@ const Contact = () => {
     company: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
@@ -23,46 +26,62 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted with data:', formData);
     
-    // Create email content
-    const subject = `New Contact Form Submission from ${formData.name}`;
-    const body = `
-Name: ${formData.name}
-Email: ${formData.email}
-Company: ${formData.company}
+    setIsSubmitting(true);
+    
+    try {
+      // Insert the message into Supabase
+      const { data, error } = await supabase
+        .from('contact_messages')
+        .insert([
+          {
+            full_name: formData.name,
+            email: formData.email,
+            company: formData.company || null,
+            message: formData.message
+          }
+        ]);
 
-Message:
-${formData.message}
-    `.trim();
-    
-    console.log('Email subject:', subject);
-    console.log('Email body:', body);
-    
-    // Create mailto link
-    const mailtoLink = `mailto:thenicosuarez@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    console.log('Mailto link:', mailtoLink);
-    
-    // Open email client
-    window.location.href = mailtoLink;
-    
-    // Show success message
-    toast({
-      title: "Email Client Opened",
-      description: "Your default email client should open with the message pre-filled. Please send the email to complete your inquiry.",
-    });
-    
-    console.log('Form reset and toast shown');
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      company: '',
-      message: ''
-    });
+      if (error) {
+        console.error('Error saving message:', error);
+        toast({
+          title: "Error",
+          description: "Failed to send your message. Please try again.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      console.log('Message saved successfully:', data);
+      
+      // Show success message
+      toast({
+        title: "Message Sent Successfully!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
+      });
+      
+      console.log('Form reset and success toast shown');
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Unexpected error:', error);
+      toast({
+        title: "Error",
+        description: "An unexpected error occurred. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -94,6 +113,7 @@ ${formData.message}
                         placeholder="Your name"
                         className="w-full"
                         required
+                        disabled={isSubmitting}
                       />
                     </div>
                     
@@ -109,6 +129,7 @@ ${formData.message}
                         placeholder="you@company.com"
                         className="w-full"
                         required
+                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
@@ -123,6 +144,7 @@ ${formData.message}
                       onChange={handleInputChange}
                       placeholder="Your company"
                       className="w-full"
+                      disabled={isSubmitting}
                     />
                   </div>
                   
@@ -138,11 +160,16 @@ ${formData.message}
                       rows={4}
                       className="w-full"
                       required
+                      disabled={isSubmitting}
                     />
                   </div>
                   
-                  <Button type="submit" className="w-full bg-cfo-navy hover:bg-cfo-blue text-white">
-                    Send Message
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-cfo-navy hover:bg-cfo-blue text-white"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </Button>
                 </form>
               </CardContent>
