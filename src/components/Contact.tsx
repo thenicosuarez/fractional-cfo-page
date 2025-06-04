@@ -30,9 +30,21 @@ const Contact = () => {
     e.preventDefault();
     console.log('Form submitted with data:', formData);
     
+    // Basic validation
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      toast({
+        title: "Error",
+        description: "Please fill in all required fields.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
     setIsSubmitting(true);
     
     try {
+      console.log('Attempting to insert into Supabase...');
+      
       // Insert the message into Supabase
       const { data, error } = await supabase
         .from('contact_messages')
@@ -43,7 +55,10 @@ const Contact = () => {
             company: formData.company || null,
             message: formData.message
           }
-        ]);
+        ])
+        .select();
+
+      console.log('Supabase response:', { data, error });
 
       if (error) {
         console.error('Error saving message:', error);
@@ -63,7 +78,7 @@ const Contact = () => {
         description: "Thank you for reaching out. I'll get back to you soon.",
       });
       
-      console.log('Form reset and success toast shown');
+      console.log('Success toast shown, resetting form...');
       
       // Reset form
       setFormData({
@@ -72,6 +87,8 @@ const Contact = () => {
         company: '',
         message: ''
       });
+
+      console.log('Form reset complete');
     } catch (error) {
       console.error('Unexpected error:', error);
       toast({
@@ -81,6 +98,7 @@ const Contact = () => {
       });
     } finally {
       setIsSubmitting(false);
+      console.log('Form submission complete, isSubmitting set to false');
     }
   };
 
@@ -104,7 +122,7 @@ const Contact = () => {
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label htmlFor="name" className="block text-sm font-medium text-cfo-slate">
-                        Full Name
+                        Full Name *
                       </label>
                       <Input
                         id="name"
@@ -119,7 +137,7 @@ const Contact = () => {
                     
                     <div className="space-y-2">
                       <label htmlFor="email" className="block text-sm font-medium text-cfo-slate">
-                        Email Address
+                        Email Address *
                       </label>
                       <Input
                         id="email"
@@ -150,7 +168,7 @@ const Contact = () => {
                   
                   <div className="space-y-2">
                     <label htmlFor="message" className="block text-sm font-medium text-cfo-slate">
-                      Message
+                      Message *
                     </label>
                     <Textarea
                       id="message"
