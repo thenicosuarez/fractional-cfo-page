@@ -1,11 +1,63 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Create email content
+    const subject = `New Contact Form Submission from ${formData.name}`;
+    const body = `
+Name: ${formData.name}
+Email: ${formData.email}
+Company: ${formData.company}
+
+Message:
+${formData.message}
+    `.trim();
+    
+    // Create mailto link
+    const mailtoLink = `mailto:thenicosuarez@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Show success message
+    toast({
+      title: "Email Client Opened",
+      description: "Your default email client should open with the message pre-filled. Please send the email to complete your inquiry.",
+    });
+    
+    // Reset form
+    setFormData({
+      name: '',
+      email: '',
+      company: '',
+      message: ''
+    });
+  };
+
   return (
     <section id="contact" className="section bg-white">
       <div className="container mx-auto">
@@ -22,7 +74,7 @@ const Contact = () => {
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold text-cfo-navy mb-6">Send a Message</h3>
                 
-                <form className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label htmlFor="name" className="block text-sm font-medium text-cfo-slate">
@@ -30,8 +82,11 @@ const Contact = () => {
                       </label>
                       <Input
                         id="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
                         placeholder="Your name"
                         className="w-full"
+                        required
                       />
                     </div>
                     
@@ -42,8 +97,11 @@ const Contact = () => {
                       <Input
                         id="email"
                         type="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
                         placeholder="you@company.com"
                         className="w-full"
+                        required
                       />
                     </div>
                   </div>
@@ -54,6 +112,8 @@ const Contact = () => {
                     </label>
                     <Input
                       id="company"
+                      value={formData.company}
+                      onChange={handleInputChange}
                       placeholder="Your company"
                       className="w-full"
                     />
@@ -65,9 +125,12 @@ const Contact = () => {
                     </label>
                     <Textarea
                       id="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
                       placeholder="How can I help you?"
                       rows={4}
                       className="w-full"
+                      required
                     />
                   </div>
                   
