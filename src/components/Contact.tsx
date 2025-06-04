@@ -16,6 +16,7 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
@@ -26,15 +27,47 @@ const Contact = () => {
     }));
   };
 
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted with data:', formData);
     
-    // Basic validation
-    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+    // Validation
+    if (!formData.name.trim()) {
       toast({
         title: "Error",
-        description: "Please fill in all required fields.",
+        description: "Please enter your full name.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!formData.email.trim()) {
+      toast({
+        title: "Error",
+        description: "Please enter your email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!validateEmail(formData.email)) {
+      toast({
+        title: "Error",
+        description: "Please enter a valid email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!formData.message.trim()) {
+      toast({
+        title: "Error",
+        description: "Please enter your message.",
         variant: "destructive",
       });
       return;
@@ -72,13 +105,10 @@ const Contact = () => {
 
       console.log('Message saved successfully:', data);
       
-      // Show success message
-      toast({
-        title: "Message Sent Successfully!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
-      });
+      // Show success state
+      setIsSubmitted(true);
       
-      console.log('Success toast shown, resetting form...');
+      console.log('Success state set, resetting form...');
       
       // Reset form
       setFormData({
@@ -101,6 +131,47 @@ const Contact = () => {
       console.log('Form submission complete, isSubmitting set to false');
     }
   };
+
+  // Show thank you message after successful submission
+  if (isSubmitted) {
+    return (
+      <section id="contact" className="section bg-white">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="section-title">Thank You!</h2>
+            <p className="section-subtitle">
+              Your message has been sent successfully. I'll get back to you soon.
+            </p>
+          </div>
+          
+          <div className="max-w-2xl mx-auto">
+            <Card className="shadow-md">
+              <CardContent className="p-8 text-center">
+                <div className="mb-6">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold text-cfo-navy mb-2">Message Sent Successfully!</h3>
+                  <p className="text-cfo-slate mb-6">
+                    Thank you for reaching out. I appreciate your interest and will respond to your message within 24 hours.
+                  </p>
+                </div>
+                
+                <Button 
+                  onClick={() => setIsSubmitted(false)}
+                  className="bg-cfo-navy hover:bg-cfo-blue text-white"
+                >
+                  Send Another Message
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="contact" className="section bg-white">
