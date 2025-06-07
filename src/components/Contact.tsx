@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -76,25 +75,22 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      console.log('Attempting to insert into Supabase...');
+      console.log('Attempting to send email...');
       
-      // Insert the message into Supabase
-      const { data, error } = await supabase
-        .from('contact_messages')
-        .insert([
-          {
-            full_name: formData.name,
-            email: formData.email,
-            company: formData.company || null,
-            message: formData.message
-          }
-        ])
-        .select();
+      // Call the edge function to send email
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          company: formData.company || undefined,
+          message: formData.message
+        }
+      });
 
-      console.log('Supabase response:', { data, error });
+      console.log('Email function response:', { data, error });
 
       if (error) {
-        console.error('Error saving message:', error);
+        console.error('Error sending email:', error);
         toast({
           title: "Error",
           description: "Failed to send your message. Please try again.",
@@ -103,7 +99,7 @@ const Contact = () => {
         return;
       }
 
-      console.log('Message saved successfully:', data);
+      console.log('Message sent successfully:', data);
       
       // Show success state
       setIsSubmitted(true);
