@@ -1,173 +1,34 @@
+
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
+import { Copy, Check } from 'lucide-react';
 
 const Contact = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const email = "thenicosuarez@gmail.com";
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { id, value } = e.target;
-    console.log(`Input changed: ${id} = ${value}`);
-    setFormData(prev => ({
-      ...prev,
-      [id]: value
-    }));
-  };
-
-  const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Form submitted with data:', formData);
-    
-    // Validation
-    if (!formData.name.trim()) {
-      toast({
-        title: "Error",
-        description: "Please enter your full name.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    if (!formData.email.trim()) {
-      toast({
-        title: "Error",
-        description: "Please enter your email address.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    if (!validateEmail(formData.email)) {
-      toast({
-        title: "Error",
-        description: "Please enter a valid email address.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    if (!formData.message.trim()) {
-      toast({
-        title: "Error",
-        description: "Please enter your message.",
-        variant: "destructive",
-      });
-      return;
-    }
-    
-    setIsSubmitting(true);
-    
+  const copyToClipboard = async () => {
     try {
-      console.log('Attempting to send email...');
-      
-      // Call the edge function to send email
-      const { data, error } = await supabase.functions.invoke('send-contact-email', {
-        body: {
-          name: formData.name,
-          email: formData.email,
-          company: formData.company || undefined,
-          message: formData.message
-        }
-      });
-
-      console.log('Email function response:', { data, error });
-
-      if (error) {
-        console.error('Error sending email:', error);
-        toast({
-          title: "Error",
-          description: "Failed to send your message. Please try again.",
-          variant: "destructive",
-        });
-        return;
-      }
-
-      console.log('Message sent successfully:', data);
-      
-      // Show success state
-      setIsSubmitted(true);
-      
-      console.log('Success state set, resetting form...');
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        message: ''
-      });
-
-      console.log('Form reset complete');
-    } catch (error) {
-      console.error('Unexpected error:', error);
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
       toast({
-        title: "Error",
-        description: "An unexpected error occurred. Please try again.",
+        title: "Email copied!",
+        description: "My email address has been copied to your clipboard.",
+      });
+      
+      // Reset the copied state after 2 seconds
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      toast({
+        title: "Copy failed",
+        description: "Please manually copy the email address.",
         variant: "destructive",
       });
-    } finally {
-      setIsSubmitting(false);
-      console.log('Form submission complete, isSubmitting set to false');
     }
   };
-
-  // Show thank you message after successful submission
-  if (isSubmitted) {
-    return (
-      <section id="contact" className="section bg-white">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="section-title">Thank You!</h2>
-            <p className="section-subtitle">
-              Your message has been sent successfully. I'll get back to you soon.
-            </p>
-          </div>
-          
-          <div className="max-w-2xl mx-auto">
-            <Card className="shadow-md">
-              <CardContent className="p-8 text-center">
-                <div className="mb-6">
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-bold text-cfo-navy mb-2">Message Sent Successfully!</h3>
-                  <p className="text-cfo-slate mb-6">
-                    Thank you for reaching out. I appreciate your interest and will respond to your message within 24 hours.
-                  </p>
-                </div>
-                
-                <Button 
-                  onClick={() => setIsSubmitted(false)}
-                  className="bg-cfo-navy hover:bg-cfo-blue text-white"
-                >
-                  Send Another Message
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section id="contact" className="section bg-white">
@@ -175,7 +36,7 @@ const Contact = () => {
         <div className="text-center mb-16">
           <h2 className="section-title">Get in Touch</h2>
           <p className="section-subtitle">
-            Schedule a consultation to discuss how I can help optimize your financial strategy.
+            Schedule a consultation or reach out directly to discuss how I can help optimize your financial strategy.
           </p>
         </div>
         
@@ -183,80 +44,44 @@ const Contact = () => {
           <div>
             <Card className="shadow-md h-full">
               <CardContent className="p-6">
-                <h3 className="text-xl font-bold text-cfo-navy mb-6">Send a Message</h3>
+                <h3 className="text-xl font-bold text-cfo-navy mb-6">Email Me Directly</h3>
                 
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label htmlFor="name" className="block text-sm font-medium text-cfo-slate">
-                        Full Name *
-                      </label>
-                      <Input
-                        id="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        placeholder="Your name"
-                        className="w-full"
-                        required
-                        disabled={isSubmitting}
-                      />
+                <div className="space-y-6">
+                  <div className="text-center">
+                    <p className="text-cfo-slate mb-4">
+                      Send me an email directly with your questions or project details:
+                    </p>
+                    
+                    <div className="bg-gray-50 rounded-lg p-4 border-2 border-dashed border-gray-200">
+                      <div className="flex items-center justify-between">
+                        <span className="text-lg font-mono text-cfo-navy">{email}</span>
+                        <Button
+                          onClick={copyToClipboard}
+                          variant="outline"
+                          size="sm"
+                          className="ml-2"
+                        >
+                          {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                          {copied ? "Copied!" : "Copy"}
+                        </Button>
+                      </div>
                     </div>
                     
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="block text-sm font-medium text-cfo-slate">
-                        Email Address *
-                      </label>
-                      <Input
-                        id="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        placeholder="you@company.com"
-                        className="w-full"
-                        required
-                        disabled={isSubmitting}
-                      />
-                    </div>
+                    <p className="text-sm text-cfo-slate mt-3">
+                      Click the copy button above to copy my email address to your clipboard.
+                    </p>
                   </div>
                   
-                  <div className="space-y-2">
-                    <label htmlFor="company" className="block text-sm font-medium text-cfo-slate">
-                      Company Name
-                    </label>
-                    <Input
-                      id="company"
-                      value={formData.company}
-                      onChange={handleInputChange}
-                      placeholder="Your company"
-                      className="w-full"
-                      disabled={isSubmitting}
-                    />
+                  <div className="border-t pt-6">
+                    <h4 className="font-semibold text-cfo-navy mb-3">What to include in your email:</h4>
+                    <ul className="text-sm text-cfo-slate space-y-2">
+                      <li>• Your name and company</li>
+                      <li>• Brief description of your business</li>
+                      <li>• Specific financial challenges you're facing</li>
+                      <li>• What type of engagement you're looking for</li>
+                    </ul>
                   </div>
-                  
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="block text-sm font-medium text-cfo-slate">
-                      Message *
-                    </label>
-                    <Textarea
-                      id="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      placeholder="How can I help you?"
-                      rows={4}
-                      className="w-full"
-                      required
-                      disabled={isSubmitting}
-                    />
-                  </div>
-                  
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-cfo-navy hover:bg-cfo-blue text-white"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
-                  </Button>
-                </form>
+                </div>
               </CardContent>
             </Card>
           </div>
