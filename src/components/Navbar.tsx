@@ -100,7 +100,7 @@ const NavLinks = ({ isScrolled }: { isScrolled: boolean }) => {
       <a href="#testimonials" className={`${linkClass} font-medium`}>Testimonials</a>
       <a href="#about" className={`${linkClass} font-medium`}>About</a>
       <a href="/blog" className={`${linkClass} font-medium`}>Blog</a>
-      <Link to="/store" className={`${linkClass} font-medium`}>Store</Link>
+      <Link to="/tools" className={`${linkClass} font-medium`}>Tools</Link>
       <a href="#contact" className={`${linkClass} font-medium`}>Contact</a>
     </>
   );
@@ -120,7 +120,7 @@ const NavLinksMobile = ({ setMobileMenuOpen }: { setMobileMenuOpen: (open: boole
       <a href="#testimonials" className={linkClass} onClick={handleClick}>Testimonials</a>
       <a href="#about" className={linkClass} onClick={handleClick}>About</a>
       <a href="/blog" className={linkClass} onClick={handleClick}>Blog</a>
-      <Link to="/store" className={linkClass} onClick={handleClick}>Store</Link>
+      <Link to="/tools" className={linkClass} onClick={handleClick}>Tools</Link>
       <a href="#contact" className={linkClass} onClick={handleClick}>Contact</a>
     </>
   );
