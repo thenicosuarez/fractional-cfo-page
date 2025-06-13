@@ -67,8 +67,8 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Scroll down indicator - Fixed positioning */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+      {/* Scroll down indicator - Better mobile centering */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce w-full flex justify-center">
         <a href="#services" className="flex flex-col items-center text-white/80 hover:text-white">
           <span className="mb-2 text-sm">Scroll Down</span>
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

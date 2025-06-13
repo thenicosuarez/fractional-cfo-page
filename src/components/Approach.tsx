@@ -115,13 +115,15 @@ const Approach = () => {
           </Card>
         </div>
         
-        <div className="mt-20">
-          <div className="bg-gray-50 rounded-lg p-8 relative">
-            <div className="bg-cfo-navy text-white py-3 px-6 rounded-md inline-block absolute -top-5 left-1/2 transform -translate-x-1/2">
-              <h3 className="font-bold">Why a Fractional CFO?</h3>
+        <div className="mt-24">
+          <div className="bg-gray-50 rounded-lg p-6 md:p-8 relative mx-4 md:mx-0">
+            {/* Fixed header positioning and mobile spacing */}
+            <div className="bg-cfo-navy text-white py-2 px-4 md:py-3 md:px-6 rounded-md text-center absolute -top-4 md:-top-5 left-1/2 transform -translate-x-1/2 w-max">
+              <h3 className="font-bold text-sm md:text-base">Why a Fractional CFO?</h3>
             </div>
             
-            <div className="grid md:grid-cols-3 gap-8 mt-8">
+            {/* Added proper top margin to prevent overlap */}
+            <div className="grid md:grid-cols-3 gap-6 md:gap-8 mt-12 md:mt-8">
               <div className="text-center">
                 <h4 className="font-bold text-cfo-navy mb-3">Cost Effective</h4>
                 <p className="text-cfo-slate text-sm">
