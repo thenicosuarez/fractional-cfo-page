@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 
@@ -15,10 +14,10 @@ const Hero = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-20">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            Strategic Financial Leadership for Growing Businesses
+            From Chaos to Cash Flow
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto">
-            Specialized fractional CFO services for ecommerce entrepreneurs and acquisition-minded investors.
+            Specialized fractional CFO services that turn growing pains into growing profits for ecommerce and acquisition-minded investors, operators, and entrepreneurs
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
