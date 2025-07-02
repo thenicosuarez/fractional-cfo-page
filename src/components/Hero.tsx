@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 
@@ -42,8 +43,8 @@ const Hero = () => {
                 className="bg-white/10 text-lg px-6 py-6 text-white border-white hover:bg-white/30"
                 asChild
               >
-                <a href="https://calendly.com/thenicosuarez/new-meeting" target="_blank" rel="noopener noreferrer">
-                  $99 Deep Dive
+                <a href="https://calendly.com/thenicosuarez/60-min-paid-deep-dive" target="_blank" rel="noopener noreferrer">
+                  $199 Deep Dive
                 </a>
               </Button>
             </div>

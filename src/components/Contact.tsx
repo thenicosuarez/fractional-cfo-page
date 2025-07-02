@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -8,7 +7,7 @@ import { Copy, Check } from 'lucide-react';
 const Contact = () => {
   const { toast } = useToast();
   const [copied, setCopied] = useState(false);
-  const email = "thenicosuarez@gmail.com";
+  const email = "nico@thenicosuarez.com";
 
   const copyToClipboard = async () => {
     try {
@@ -109,13 +108,13 @@ const Contact = () => {
                     <h4 className="text-lg font-semibold text-cfo-navy mb-2">Deep Dive Consultation</h4>
                     <p className="text-cfo-slate mb-4">60-minute in-depth session to address your specific financial challenges.</p>
                     <div className="flex items-center justify-center mb-4">
-                      <span className="text-xl font-bold text-cfo-navy">$99</span>
+                      <span className="text-xl font-bold text-cfo-navy">$199</span>
                     </div>
                     <Button 
                       className="w-full bg-cfo-navy hover:bg-cfo-blue text-white"
                       asChild
                     >
-                      <a href="https://calendly.com/thenicosuarez/new-meeting" target="_blank" rel="noopener noreferrer">
+                      <a href="https://calendly.com/thenicosuarez/60-min-paid-deep-dive" target="_blank" rel="noopener noreferrer">
                         Book 60-Minute Consultation
                       </a>
                     </Button>

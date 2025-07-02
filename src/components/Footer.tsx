@@ -60,8 +60,8 @@ const Footer = () => {
                   className="bg-cfo-navy hover:bg-cfo-blue text-white border border-white/20 w-full"
                   asChild
                 >
-                  <a href="https://calendly.com/thenicosuarez/new-meeting" target="_blank" rel="noopener noreferrer">
-                    $99 Deep Dive (60min)
+                  <a href="https://calendly.com/thenicosuarez/60-min-paid-deep-dive" target="_blank" rel="noopener noreferrer">
+                    $199 Deep Dive (60min)
                   </a>
                 </Button>
               </div>
