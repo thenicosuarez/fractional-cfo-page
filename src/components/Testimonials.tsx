@@ -49,19 +49,19 @@ const Testimonials = () => {
 
 const testimonials = [
   {
-    quote: "The financial strategies implemented helped grow our ecommerce revenue by 40% while improving our cash position. Invaluable guidance.",
-    name: "Sarah Johnson",
-    position: "CEO, EcoStyle Clothing"
+    quote: "Nico was instrumental throughout our entire diligence and capital raising process. From pre-close preparation through post-close integration, he made sure everything went smoothly at every stage. There's no way this deal gets done without him.",
+    name: "Cameron",
+    position: "CEO, SaaS Company · Eight-Figure Acquisition"
   },
   {
-    quote: "During our business acquisition, we received excellent guidance on due diligence and deal structuring that saved us from potential pitfalls.",
-    name: "Michael Chen",
-    position: "ETA Investor"
+    quote: "Nico helped us truly understand our business model and built a financial framework that was both rigorous and intuitive. His analytical thinking and ability to present data clearly were invaluable as we evaluated our retail launch — he saved us countless hours and dollars we didn't know we were leaving on the table.",
+    name: "Patrick",
+    position: "CEO, E-Commerce Skincare Brand · Financial Modeling & Retail Launch"
   },
   {
-    quote: "The financial reporting dashboard created for our business gives us real-time visibility we never had before. Now we make faster, data-driven decisions.",
-    name: "James Wilson",
-    position: "Founder, TechGadget"
+    quote: "As a first-time buyer, I didn't know what I didn't know. Nico coached me through the entire negotiation and diligence process with clarity and confidence — he taught me how to see around corners. Without him, I'm not sure the deal would have happened.",
+    name: "DJ",
+    position: "First-Time Business Buyer · Acquisition Advisory & Negotiation"
   }
 ];
 
