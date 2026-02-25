@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import ProfitGenieBanner from "@/components/ProfitGenieBanner";
 import Services from "@/components/Services";
 import Approach from "@/components/Approach";
 import Testimonials from "@/components/Testimonials";
@@ -37,6 +38,7 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <Hero />
+      <ProfitGenieBanner />
       
       <main>
         <div className="animate-on-scroll">
