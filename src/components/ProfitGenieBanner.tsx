@@ -35,7 +35,7 @@ const ProfitGenieBanner = () => {
             className="bg-white text-emerald-900 hover:bg-white/90 text-lg px-10 py-7 font-bold rounded-lg shadow-lg shadow-black/20 transition-all hover:scale-105"
             asChild
           >
-            <a href="https://profit-genie.replit.app/landing" target="_blank" rel="noopener noreferrer">
+            <a href="https://profitgenie.ai" target="_blank" rel="noopener noreferrer">
               Try Profit Genie →
             </a>
           </Button>
